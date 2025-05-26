@@ -6,6 +6,7 @@ function printOutString() {
 }
 
 printOutString(); //This is a sentence.
+document.getElementById('resultado1').textContent = printOutString();
 
 // Exercise #2 (sugerencia map() )  -------------------------------------------------------------------------
 // Write a function that:
@@ -16,11 +17,12 @@ printOutString(); //This is a sentence.
 
 function doubleNumbers(arr) {
   const doubled = arr.map(num => num * 2);
-  console.log(doubled);
   return doubled;
 }
 
 doubleNumbers([1, 2, 4, 5]); //[2, 4, 8, 10]
+document.getElementById('resultado2').textContent = `Doblado: ${doubleNumbers([1, 2, 4, 5]).join(", ")}`;
+
 
 
 // Exercise #3 (sugerencia reduce() )  -------------------------------------------------------------------------
@@ -29,15 +31,14 @@ doubleNumbers([1, 2, 4, 5]); //[2, 4, 8, 10]
 // Example: Given an array [1, 2, 3, 4] The sum is 10. The product is 24.
 
 function sumAndProduct(arr) {
-  const sum = arr.reduce((acc, num) => acc + num, 0);
-  const product = arr.reduce((acc, num) => acc * num, 1);
-  
-  console.log("Sum:", sum);
-  console.log("Product:", product);
-  return sum, product;
+    const sum = arr.reduce((acc, num) => acc + num, 0);
+    const product = arr.reduce((acc, num) => acc * num, 1);
+    return { sum, product };
 }
+let array = [1, 2, 3, 4];
+const { sum, product } = sumAndProduct(array);
+document.getElementById('resultado3').textContent = `Suma: ${sum}, Producto: ${product}`;
 
-sumAndProduct([1, 2, 3, 4]); // 10, 24
 
 
 // Exercise #4 (sugerencia filter() e includes() )  -------------------------------------------------------------------------
@@ -49,12 +50,12 @@ sumAndProduct([1, 2, 3, 4]); // 10, 24
 let student1Courses = ['Math', 'English', 'Programming'];
 let student2Courses = ['Geography', 'Spanish', 'Programming'];
 
-function findCommonCourses() {
-  const commonCourses = student1Courses.filter(course => student2Courses.includes(course));
-  console.log(commonCourses);
-}
+function findCommonCourses(array1, arra2) {
+  const commonCourses = array1.filter(course => arra2.includes(course));
+  return commonCourses;
+};
 
-findCommonCourses(); //['Programming']
+document.getElementById('resultado4').textContent = `Cursos comunes: ${findCommonCourses(student1Courses, student2Courses)}`;
 
 
 // Exercise #5 -------------------------------------------------------------------------
@@ -86,7 +87,9 @@ for (let i = 0; i < people.length; i++) {
 }
 
 // 7.	Write the command that gives the indexOf where "Maria" is located.
-console.log(people.indexOf("Maria"));
+// console.log(people.indexOf("Maria"));
+let peopleInfo = `Personas después de modificaciones: ${people.join(", ")}`;
+document.getElementById('resultado5').textContent = peopleInfo;
 
 
 
@@ -107,7 +110,8 @@ function bubbleSort(arr) {
       }
     }
   }
-  console.log(arr);
-}
+  return arr;
+};
 
-bubbleSort([3, 6, 12, 5, 100, 1]);
+let sortedArray = bubbleSort([3, 6, 12, 5, 100, 1]);
+document.getElementById('resultado6').textContent = `Arreglo ordenado: ${sortedArray.join(", ")}`;
